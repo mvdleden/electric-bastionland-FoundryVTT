@@ -19,7 +19,7 @@
   "gridUnits": "m",
   "primaryTokenAttribute": "hp",
   "license": "LICENSE.txt",
-  "manifest" :  "https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/1.0.0/system.json",
-  "download" :  "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.0.0.zip",
+  "manifest" :  "https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/1.0.1/system.json",
+  "download" :  "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.0.1.zip",
   "url" : "https://github.com/mvdleden/electric-bastionland-FoundryVTT/"
 }
