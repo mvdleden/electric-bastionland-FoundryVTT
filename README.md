@@ -1,6 +1,6 @@
 # The Electric Bastionland system for FoundryVTT!
 
-Implements basic character and item sheets for playing the excellent Chris McDowall's [Electric Bastionland](https://bastionlandpress.com/products/electric-bastionland-hardback-book) in Foundt VTT.
+Implements basic character and item sheets for playing the excellent Chris McDowall's [Electric Bastionland](https://bastionlandpress.com/products/electric-bastionland-hardback-book) in Foundry VTT.
 
 ![](https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/master/electric%20bastionland%20sheets.png)
 Character creation, spark tables and such are *not* implemented. You still need the book / pdf.
