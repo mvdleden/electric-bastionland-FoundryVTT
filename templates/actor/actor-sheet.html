@@ -37,7 +37,7 @@
                             <label
                                 for="data.hp.value"
                                 class="resource-label">HP
-
+                                {{#if data.tooBulky}}<span class="too-bulky" title="Too BULKY!">!</span>{{/if}}
                             </label>
                             <div class="resource-content flexrow flex-center flex-between">
                                 <input
@@ -236,9 +236,6 @@
 						{{#if item.data.damageFormula}}
 						<span class="item-info">{{item.data.damageFormula}} damage</span>
 						{{/if}}
-						{{#if item.data.handedness}}
-						<span>&nbsp;&nbsp;<small><i> {{item.data.handedness}} handed</i></small></span>
-						{{/if}}
 					</span>
                     <div class="item-controls">
                         {{#if item.data.equipped}}
@@ -247,8 +244,7 @@
                             class="rollable"
                             data-label="damage with {{item.name}}"
                             data-roll="{{item.data.damageFormula}}"
-                            title="Roll Damage"
-                        >
+                            title="Roll Damage">
 							<i class="fas fa-dice-d20"></i>
 						</span>
                         {{/if}}

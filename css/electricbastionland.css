@@ -300,6 +300,11 @@ h2.failed-career input {
     text-align: right;
 }
 
+.electricbastionland .too-bulky {
+    font-weight: bold;
+    color: red;
+}
+
 .electricbastionland .items-list .item-info {
     margin-left: 4px;
     border-style: solid;
