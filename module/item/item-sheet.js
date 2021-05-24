@@ -23,7 +23,9 @@ export class ElectricBastionlandItemSheet extends ItemSheet {
 
     /** @override */
     getData () {
-        return super.getData();
+        const context = super.getData();
+        context.systemData = context.data.data;
+        return context;
     }
 
     /* -------------------------------------------- */

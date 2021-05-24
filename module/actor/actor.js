@@ -8,14 +8,10 @@ export class ElectricBastionlandActor extends Actor {
      */
     prepareData () {
         super.prepareData();
+        this.data.data.groups = this.data.data.groups || {};
+        this.data.data.attributes = this.data.data.attributes || {};
 
-        const actorData = this.data;
-        const data = actorData.data;
-        const flags = actorData.flags;
-
-        // Make separate methods for each Actor type (character, npc, etc.) to keep
-        // things organized.
-        if (actorData.type === 'character') this._prepareCharacterData(actorData);
+        if (this.data.type === 'character') this._prepareCharacterData(this.data);
     }
 
     /**
@@ -24,14 +20,23 @@ export class ElectricBastionlandActor extends Actor {
     _prepareCharacterData (actorData) {
         const data = actorData.data;
 
+        // sum all armour for equipped items
         data.armour = actorData
             .items
-            .map(item => item.data.armour * item.data.equipped)
-            .reduce((a, b) => a + b, 0)
+            .map(
+                item => item.data.data.equipped ? item.data.data.armour : 0
+            )
+            .reduce(
+                (a, b) => a + b, 0
+            )
 
+        // check if more than two items are bulky
         data.tooBulky = actorData
             .items
-            .filter((obj) => obj.data.bulky === true).length > 2;
+            .filter(
+                item => item.data.data.bulky
+            )
+            .length > 2;
 
         if (data.tooBulky) {
             data.hp.value = 0;
@@ -39,20 +44,15 @@ export class ElectricBastionlandActor extends Actor {
 
     }
 
-
     /** @override */
     getRollData () {
-        const data = super.getRollData();
-        // Let us do @str etc, instead of @abilities.str.value
-        for (let [k, v] of Object.entries(data.abilities)) {
-            if (!(k in data)) data[k] = v.value;
-        }
-        return data
+        return super.getRollData();
     }
 
     /** @override */
     deleteOwnedItem (itemId) {
         const item = this.getOwnedItem(itemId);
+
         if (item.data.data.quantity > 1) {
             item.data.data.quantity--;
         } else {
