@@ -5,21 +5,27 @@ import { ElectricBastionlandItem } from "./item/item.js";
 import { ElectricBastionlandItemSheet } from "./item/item-sheet.js";
 
 Hooks.once('init', async function () {
+    // Register sheet application classes
+    Actors.unregisterSheet("core", ActorSheet);
+    Actors.registerSheet("electricbastionland", ElectricBastionlandActorSheet, {makeDefault: true});
+    Items.unregisterSheet("core", ItemSheet);
+    Items.registerSheet("electricbastionland", ElectricBastionlandItemSheet, {makeDefault: true});
 
     game.electricbastionland = {
-        ElectricBastionlandActor,
-        ElectricBastionlandItem,
+        apps: {
+            ElectricBastionlandActorSheet,
+            ElectricBastionlandItemSheet
+        },
+        entitie: {
+            ElectricBastionlandActor,
+            ElectricBastionlandItem,
+        }
     };
 
     // Define custom Entity classes
     CONFIG.Actor.entityClass = ElectricBastionlandActor;
     CONFIG.Item.entityClass = ElectricBastionlandItem;
 
-    // Register sheet application classes
-    Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("electricbastionland", ElectricBastionlandActorSheet, {makeDefault: true});
-    Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("electricbastionland", ElectricBastionlandItemSheet, {makeDefault: true});
 
     // If you need to add Handlebars helpers, here are a few useful examples:
     Handlebars.registerHelper('concat', function () {
@@ -30,7 +36,7 @@ Hooks.once('init', async function () {
                 outStr += arguments[arg];
             }
         }
-        
+
         return outStr;
     });
 

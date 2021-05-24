@@ -18,14 +18,17 @@
                     name="name"
                     type="text"
                     value="{{actor.name}}"
-                    placeholder="Name"/>
+                    placeholder="Name"
+                    data-dtype="String"
+                />
             </h1>
             <h2 class="failed-career">
                 <input
                     name="data.failedCareer"
                     type="text"
-                    value="{{data.failedCareer}}"
-                    placeholder="Failed Career"/>
+                    value="{{systemData.failedCareer}}"
+                    placeholder="Failed Career"
+                    data-dtype="String"/>
             </h2>
             <div class="">
                 {{!-- "flex-group-center" is also defined in the _grid.scss file
@@ -35,7 +38,7 @@
                     <div class="resource flexrow flex-group-center">
                         <div class="flexcol">
                             <label
-                                for="data.hp.value"
+                                for="systemData.hp.value"
                                 class="resource-label">HP
                                 {{#if data.tooBulky}}<span class="too-bulky" title="Too BULKY!">!</span>{{/if}}
                             </label>
@@ -43,14 +46,14 @@
                                 <input
                                     type="text"
                                     name="data.hp.value"
-                                    value="{{data.hp.value}}"
+                                    value="{{systemData.hp.value}}"
                                     data-dtype="Number"
                                 />
                                 <span> / </span>
                                 <input
                                     type="text"
                                     name="data.hp.max"
-                                    value="{{data.hp.max}}"
+                                    value="{{systemData.hp.max}}"
                                     data-dtype="Number"/>
 
                             </div>
@@ -81,7 +84,7 @@
                                 <input
                                     type="text"
                                     name="data.pounds"
-                                    value="{{data.pounds}}"
+                                    value="{{systemData.pounds}}"
                                     data-dtype="Number"
                                 />
                             </div>
@@ -94,7 +97,7 @@
                                 class="resource-label">Armour</label>
                             <div class="resource-content flexrow flex-center flex-between">
 								<span>
-									{{data.armour}}
+									{{systemData.armour}}
 								</span>
                             </div>
                         </div>
@@ -106,13 +109,13 @@
     </header>
     <div class="">
         <div class="grid grid-3col">
-            {{#each data.abilities as |ability key|}}
+            {{#each systemData.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
                 <div class="flexcol">
                     <label
-                        for="data.abilities.{{key}}.value"
+                        for="systemData.abilities.{{key}}.value"
                         class="resource-label rollable"
-                        data-roll="d20 under @abilities.{{key}}.value"
+                        data-roll="d20[under or equal @abilities.{{key}}.value]"
                         data-label="{{key}} save">
                         <i class="fas fa-dice-d20"></i> {{key}}
                     </label>
@@ -136,7 +139,7 @@
         </div>
     </div>
     <div class="grid grid-3col">
-        {{#unless data.deprived}}
+        {{#unless systemData.deprived}}
         <span>
 			<button
                 type="button"
@@ -187,7 +190,7 @@
             data-tab="description">
             {{
             editor
-            content=data.biography
+            content=systemData.biography
             target="data.biography"
             button=true
             owner=owner
@@ -220,30 +223,30 @@
 					<span>
 						<span class="item-name item-edit">
 							{{item.data.quantity}}
-							{{#boldIf item.data.equipped}}
+							{{#boldIf item.data.data.equipped}}
 							{{item.name}}
 							{{/boldIf}}
 						</span>
-						{{#if item.data.bulky}}
+						{{#if item.data.data.bulky}}
 						<span class="item-info">BULKY</span>
 						{{/if}}
-						{{#if item.data.blast}}
+						{{#if item.data.data.blast}}
 						<span class="item-info">BLAST</span>
 						{{/if}}
-						{{#if item.data.armour}}
-						<span class="item-info">Armour {{item.data.armour}}</span>
+						{{#if item.data.data.armour}}
+						<span class="item-info">Armour {{item.data.data.armour}}</span>
 						{{/if}}
 						{{#if item.data.damageFormula}}
-						<span class="item-info">{{item.data.damageFormula}} damage</span>
+						<span class="item-info">{{item.data.data.damageFormula}} damage</span>
 						{{/if}}
 					</span>
                     <div class="item-controls">
-                        {{#if item.data.equipped}}
-                        {{#if item.data.damageFormula}}
+                        {{#if item.data.data.equipped}}
+                        {{#if item.data.data.damageFormula}}
                         <span
-                            class="rollable"
+                            class="item-button rollable"
                             data-label="damage with {{item.name}}"
-                            data-roll="{{item.data.damageFormula}}"
+                            data-roll="{{item.data.data.damageFormula}}"
                             title="Roll Damage">
 							<i class="fas fa-dice-d20"></i>
 						</span>

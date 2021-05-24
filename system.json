@@ -2,9 +2,9 @@
   "name": "electricbastionland",
   "title": "Electric Bastionland",
   "description": "The Electric Bastionland system for FoundryVTT!",
-  "version": "1.0.3",
-  "minimumCoreVersion": "0.6.2",
-  "compatibleCoreVersion": "0.6.3",
+  "version": "1.1.0",
+  "minimumCoreVersion": "0.8.5",
+  "compatibleCoreVersion": "0.8.5",
   "templateVersion": 2,
   "author": "mvdleden",
   "esmodules": [
@@ -20,6 +20,6 @@
   "primaryTokenAttribute": "hp",
   "license": "LICENSE.txt",
   "manifest": "https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/master/system.json",
-  "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.0.2.zip",
+  "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.0.7.zip",
   "url": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/"
 }
