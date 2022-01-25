@@ -45,16 +45,15 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
 
         // Update Inventory Item
         html.find('.item-edit').click(ev => {
-            const li = $(ev.currentTarget).parents(".item");
-            const item = this.actor.getOwnedItem(li.data("itemId"));
+            const li = $(ev.currentTarget).parents(".item")[0];
+            const item = this.actor.items.get(li.dataset.itemId);
             item.sheet.render(true);
         });
 
         // Delete Inventory Item
         html.find('.item-delete').click(ev => {
-            const li = $(ev.currentTarget).parents(".item");
-            this.actor.deleteOwnedItem(li.data("itemId"));
-            li.slideUp(200, () => this.render(false));
+            const li = $(ev.currentTarget).parents(".item")[0];
+            this.actor.deleteEmbeddedDocuments("Item", [li.dataset.itemId]);
         });
 
         html.find(".item-create").click(this._onItemCreate.bind(this));
@@ -118,7 +117,7 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
         delete itemData.data["type"];
 
         // Finally, create the item!
-        return this.actor.createOwnedItem(itemData);
+        return this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
     /**
@@ -134,8 +133,9 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
         if (dataset.roll) {
             let roll = new Roll(dataset.roll, this.actor.data.data);
             let label = dataset.label ? `Rolling ${dataset.label}` : '';
+            roll.roll({ async: false });
 
-            roll.roll().toMessage({
+            roll.toMessage({
                 speaker: ChatMessage.getSpeaker({actor: this.actor}),
                 flavor: label,
             });

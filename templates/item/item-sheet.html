@@ -19,8 +19,7 @@
                     <input
                         class="checkbox-block"
                         type="checkbox"
-                        {{checked
-                        systemData.bulky}}
+                        {{checked systemData.bulky}}
                         name="data.bulky"
                         value="{{systemData.bulky}}"
                         data-dtype="Boolean"/>
@@ -30,8 +29,7 @@
                     <input
                         class="checkbox-block"
                         type="checkbox"
-                        {{checked
-                        systemData.equipped}}
+                        {{checked systemData.equipped}}
                         name="data.equipped"
                         value="{{systemData.equipped}}"
                         data-dtype="Boolean"/>
@@ -43,8 +41,7 @@
                     <input
                         class="checkbox-block"
                         type="checkbox"
-                        {{checked
-                        systemData.blast}}
+                        {{checked systemData.blast}}
                         name="data.blast"
                         value="{{systemData.blast}}"
                         data-dtype="Boolean"/>
@@ -58,7 +55,7 @@
         <div class="resource flex-group-center">
             <label class="resource-label">Quantity</label>
             <input
-                type="text"
+                type="number"
                 name="data.quantity"
                 value="{{systemData.quantity}}"
                 data-dtype="Number"/>
@@ -66,7 +63,7 @@
         <div class="resource flex-group-center">
             <label class="resource-label"># of Uses</label>
             <input
-                type="text"
+                type="number"
                 name="data.numberOfUses"
                 value="{{systemData.numberOfUses}}"
                 data-dtype="Number"/>
@@ -74,7 +71,7 @@
         <div class="resource flex-group-center">
             <label class="resource-label">Armour</label>
             <input
-                type="text"
+                type="number"
                 name="data.armour"
                 value="{{systemData.armour}}"
                 data-dtype="Number"/>

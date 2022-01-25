@@ -44,14 +44,14 @@
                             </label>
                             <div class="resource-content flexrow flex-center flex-between">
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="data.hp.value"
                                     value="{{systemData.hp.value}}"
                                     data-dtype="Number"
                                 />
                                 <span> / </span>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="data.hp.max"
                                     value="{{systemData.hp.max}}"
                                     data-dtype="Number"/>
@@ -65,10 +65,9 @@
                             <input
                                 class="checkbox-block"
                                 type="checkbox"
-                                {{checked
-                                data.deprived}}
+                                {{checked data.data.deprived}}
                                 name="data.deprived"
-                                value="{{data.deprived}}"
+                                value="{{data.data.deprived}}"
                                 data-dtype="Boolean"/>
                         </div>
                     </div>
@@ -82,7 +81,7 @@
                                 class="resource-label">&#163;</label>
                             <div class="resource-content flexrow flex-center flex-between">
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="data.pounds"
                                     value="{{systemData.pounds}}"
                                     data-dtype="Number"
@@ -121,13 +120,13 @@
                     </label>
                     <div class="flexrow">
                         <input
-                            type="text"
+                            type="number"
                             name="data.abilities.{{key}}.value"
                             value="{{ability.value}}"
                             data-dtype="Number"
                         /> <span> / </span>
                         <input
-                            type="text"
+                            type="number"
                             name="data.abilities.{{key}}.max"
                             value="{{ability.max}}"
                             data-dtype="Number"
@@ -139,19 +138,20 @@
         </div>
     </div>
     <div class="grid grid-3col">
-        {{#unless systemData.deprived}}
         <span>
 			<button
                 type="button"
                 title="Rest"
+                {{#if systemData.deprived}}
+                disabled="true"
+                {{/if}}
                 class="rest">Rest
 			</button>
 		</span>
-        {{/unless}}
         <span>
 			<button
                 type="button"
-                title="Rest"
+                title="Restore Abilities"
                 class="restore">Restore Abilities
 			</button>
 		</span>
@@ -219,7 +219,7 @@
                 {{#each actor.items as |item id|}}
                 <li
                     class="item flexrow"
-                    data-item-id="{{item._id}}">
+                    data-item-id="{{item.id}}">
 					<span>
 						<span class="item-name item-edit">
 							{{item.data.quantity}}
@@ -265,4 +265,3 @@
         </div>
     </section>
 </form>
-

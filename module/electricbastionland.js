@@ -23,8 +23,8 @@ Hooks.once('init', async function () {
     };
 
     // Define custom Entity classes
-    CONFIG.Actor.entityClass = ElectricBastionlandActor;
-    CONFIG.Item.entityClass = ElectricBastionlandItem;
+    CONFIG.Actor.documentClass = ElectricBastionlandActor;
+    CONFIG.Item.documentClass = ElectricBastionlandItem;
 
 
     // If you need to add Handlebars helpers, here are a few useful examples:
@@ -49,4 +49,3 @@ Hooks.once('init', async function () {
     });
 
 });
-
