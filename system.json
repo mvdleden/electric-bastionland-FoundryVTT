@@ -3,7 +3,7 @@
   "title": "Electric Bastionland",
   "description": "The Electric Bastionland system for FoundryVTT!",
   "author": "mvdleden",
-  "authors": ["anki21"],
+  "authors": ["mvdleden", "anki21"],
   "url": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/",
   "license": "LICENSE.txt",
   "flags": {},
