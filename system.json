@@ -3,13 +3,18 @@
   "title": "Electric Bastionland",
   "description": "The Electric Bastionland system for FoundryVTT!",
   "author": "mvdleden",
-  "authors": ["mvdleden", "anki21"],
+  "authors": [
+    {"name": "mvdleden"},
+    {"name": "anki21"}
+  ],
   "url": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/",
   "license": "LICENSE.txt",
   "flags": {},
   "version": "1.2.0",
-  "minimumCoreVersion": "0.8.0",
-  "compatibleCoreVersion": "9",
+  "compatibility": {
+    "minimum": "0.8.0",
+    "verified": "9"
+  },
   "scripts": [],
   "esmodules": [
     "module/electricbastionland.js"
@@ -20,7 +25,7 @@
   "languages": [],
   "packs": [],
   "system": [],
-  "dependencies": [],
+  "relationships": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/master/system.json",
   "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.2.0.zip",
