@@ -10,7 +10,7 @@
   "url": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "1.2.0",
+  "version": "1.2.1",
   "compatibility": {
     "minimum": "0.8.0",
     "verified": "9"
@@ -28,7 +28,7 @@
   "relationships": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/master/system.json",
-  "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.2.0.zip",
+  "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.2.1.zip",
   "protected": false,
   "gridDistance": 1,
   "gridUnits": "m",

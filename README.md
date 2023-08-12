@@ -17,3 +17,7 @@ The code is based on the [Into The Odd system](https://github.com/voidcase/IntoT
 1. Place the unzipped folder in your `Data/systems` folder
 2. Make sure the folder is named `electricbastionland`
 3. Launch FoundryVTT and create your new world, selecting the Electric Bastionland system.
+
+## Contributors
+mvdleden, anki21, mus0u
+ 
