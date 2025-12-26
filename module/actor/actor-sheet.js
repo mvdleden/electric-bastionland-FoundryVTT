@@ -5,7 +5,7 @@
 export class ElectricBastionlandActorSheet extends ActorSheet {
     /** @override */
     static get defaultOptions () {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: [
                 "electricbastionland",
                 "sheet",
@@ -28,7 +28,7 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
     /** @override */
     getData () {
         const context = super.getData();
-        context.systemData = context.data.data;
+        context.system = context.actor.system;
 
         return context;
     }
@@ -72,16 +72,16 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
             .click(async ev => {
                 // Someone DEPRIVED of a crucial need (e.g.
                 // food,water or warmth) cannot benefit from RESTS
-                if (!this.actor.data.data.deprived) {
-                    await this.actor.update({'data.hp.value': this.actor.data.data.hp.max});
+                if (!this.actor.system.deprived) {
+                    await this.actor.update({'system.hp.value': this.actor.system.hp.max});
                 }
             });
 
         html.find('.restore')
             .click(async ev => {
-                await this.actor.update({'data.abilities.STR.value': this.actor.data.data.abilities.STR.max});
-                await this.actor.update({'data.abilities.DEX.value': this.actor.data.data.abilities.DEX.max});
-                await this.actor.update({'data.abilities.CHA.value': this.actor.data.data.abilities.CHA.max});
+                await this.actor.update({'system.abilities.STR.value': this.actor.system.abilities.STR.max});
+                await this.actor.update({'system.abilities.DEX.value': this.actor.system.abilities.DEX.max});
+                await this.actor.update({'system.abilities.CHA.value': this.actor.system.abilities.CHA.max});
             });
 
         html.find('.luck')
@@ -111,10 +111,10 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
         const itemData = {
             name: name,
             type: type,
-            data: data,
+            system: data,
         };
         // Remove the type from the dataset since it's in the itemData.type prop.
-        delete itemData.data["type"];
+        delete itemData.system["type"];
 
         // Finally, create the item!
         return this.actor.createEmbeddedDocuments("Item", [itemData]);
@@ -131,13 +131,13 @@ export class ElectricBastionlandActorSheet extends ActorSheet {
         const dataset = element.dataset;
 
         if (dataset.roll) {
-            let roll = new Roll(dataset.roll, this.actor.data.data);
+            let roll = new Roll(dataset.roll, this.actor.system);
             let label = dataset.label ? `Rolling ${dataset.label}` : '';
-            roll.roll({ async: false });
-
-            roll.toMessage({
-                speaker: ChatMessage.getSpeaker({actor: this.actor}),
-                flavor: label,
+            roll.roll().then(result => {
+                result.toMessage({
+                    speaker: ChatMessage.getSpeaker({actor: this.actor}),
+                    flavor: label,
+                });
             });
         }
     }

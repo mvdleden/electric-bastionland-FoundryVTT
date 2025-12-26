@@ -8,33 +8,31 @@ export class ElectricBastionlandActor extends Actor {
      */
     prepareData () {
         super.prepareData();
-        this.data.data.groups = this.data.data.groups || {};
-        this.data.data.attributes = this.data.data.attributes || {};
+        this.system.groups = this.system.groups || {};
+        this.system.attributes = this.system.attributes || {};
 
-        if (this.data.type === 'character') this._prepareCharacterData(this.data);
+        if (this.type === 'character') this._prepareCharacterData();
     }
 
     /**
      * Prepare Character type specific data
      */
-    _prepareCharacterData (actorData) {
-        const data = actorData.data;
+    _prepareCharacterData () {
+        const data = this.system;
 
         // sum all armour for equipped items
-        data.armour = actorData
-            .items
+        data.armour = this.items
             .map(
-                item => item.data.data.equipped ? item.data.data.armour : 0
+                item => item.system.equipped ? item.system.armour : 0
             )
             .reduce(
                 (a, b) => a + b, 0
             )
 
         // check if more than two items are bulky
-        data.tooBulky = actorData
-            .items
+        data.tooBulky = this.items
             .filter(
-                item => item.data.data.bulky
+                item => item.system.bulky
             )
             .length > 2;
 
@@ -47,16 +45,5 @@ export class ElectricBastionlandActor extends Actor {
     /** @override */
     getRollData () {
         return super.getRollData();
-    }
-
-    /** @override */
-    deleteOwnedItem (itemId) {
-        const item = this.getOwnedItem(itemId);
-
-        if (item.data.data.quantity > 1) {
-            item.data.data.quantity--;
-        } else {
-            super.deleteOwnedItem(itemId);
-        }
     }
 }

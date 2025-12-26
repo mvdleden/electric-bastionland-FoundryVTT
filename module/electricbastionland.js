@@ -16,7 +16,7 @@ Hooks.once('init', async function () {
             ElectricBastionlandActorSheet,
             ElectricBastionlandItemSheet
         },
-        entitie: {
+        entities: {
             ElectricBastionlandActor,
             ElectricBastionlandItem,
         }

@@ -10,10 +10,10 @@ export class ElectricBastionlandItem extends Item {
         super.prepareData();
 
         // Get the Item's data
-        const itemData = this.data;
+        const itemData = this;
         const actorData = this.actor
-            ? this.actor.data
+            ? this.actor
             : {};
-        const data = itemData.data;
+        const data = this.system;
     }
 }

@@ -19,9 +19,9 @@
                     <input
                         class="checkbox-block"
                         type="checkbox"
-                        {{checked systemData.bulky}}
-                        name="data.bulky"
-                        value="{{systemData.bulky}}"
+                        {{checked system.bulky}}
+                        name="system.bulky"
+                        value="{{system.bulky}}"
                         data-dtype="Boolean"/>
                 </div>
                 <div class="resource flex-group-center">
@@ -29,9 +29,9 @@
                     <input
                         class="checkbox-block"
                         type="checkbox"
-                        {{checked systemData.equipped}}
-                        name="data.equipped"
-                        value="{{systemData.equipped}}"
+                        {{checked system.equipped}}
+                        name="system.equipped"
+                        value="{{system.equipped}}"
                         data-dtype="Boolean"/>
                 </div>
             </div>
@@ -41,9 +41,9 @@
                     <input
                         class="checkbox-block"
                         type="checkbox"
-                        {{checked systemData.blast}}
-                        name="data.blast"
-                        value="{{systemData.blast}}"
+                        {{checked system.blast}}
+                        name="system.blast"
+                        value="{{system.blast}}"
                         data-dtype="Boolean"/>
                 </div>
 
@@ -56,32 +56,32 @@
             <label class="resource-label">Quantity</label>
             <input
                 type="number"
-                name="data.quantity"
-                value="{{systemData.quantity}}"
+                name="system.quantity"
+                value="{{system.quantity}}"
                 data-dtype="Number"/>
         </div>
         <div class="resource flex-group-center">
             <label class="resource-label"># of Uses</label>
             <input
                 type="number"
-                name="data.numberOfUses"
-                value="{{systemData.numberOfUses}}"
+                name="system.numberOfUses"
+                value="{{system.numberOfUses}}"
                 data-dtype="Number"/>
         </div>
         <div class="resource flex-group-center">
             <label class="resource-label">Armour</label>
             <input
                 type="number"
-                name="data.armour"
-                value="{{systemData.armour}}"
+                name="system.armour"
+                value="{{system.armour}}"
                 data-dtype="Number"/>
         </div>
         <div class="resource flex-group-center">
             <label class="resource-label">Damage</label>
             <input
                 type="text"
-                name="data.damageFormula"
-                value="{{systemData.damageFormula}}"/>
+                name="system.damageFormula"
+                value="{{system.damageFormula}}"/>
         </div>
     </div>
     <div class="sheet-tabs-container">
@@ -94,5 +94,5 @@
         </nav>
     </div>
 
-    {{editor content=systemData.description target="data.description" button=true owner=owner editable=editable}}
+    {{editor system.description target="system.description" button=true owner=owner engine="prosemirror" }}
 </form>

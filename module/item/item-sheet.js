@@ -6,7 +6,7 @@ export class ElectricBastionlandItemSheet extends ItemSheet {
 
     /** @override */
     static get defaultOptions () {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["electricbastionland", "sheet", "item"],
             width: 420,
             height: 440
@@ -24,7 +24,7 @@ export class ElectricBastionlandItemSheet extends ItemSheet {
     /** @override */
     getData () {
         const context = super.getData();
-        context.systemData = context.data.data;
+        context.system = context.item.system;
         return context;
     }
 

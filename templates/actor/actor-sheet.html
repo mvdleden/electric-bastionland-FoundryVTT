@@ -24,9 +24,9 @@
             </h1>
             <h2 class="failed-career">
                 <input
-                    name="data.failedCareer"
+                    name="system.failedCareer"
                     type="text"
-                    value="{{systemData.failedCareer}}"
+                    value="{{system.failedCareer}}"
                     placeholder="Failed Career"
                     data-dtype="String"/>
             </h2>
@@ -38,22 +38,22 @@
                     <div class="resource flexrow flex-group-center">
                         <div class="flexcol">
                             <label
-                                for="systemData.hp.value"
+                                for="system.hp.value"
                                 class="resource-label">HP
-                                {{#if data.tooBulky}}<span class="too-bulky" title="Too BULKY!">!</span>{{/if}}
+                                {{#if system.tooBulky}}<span class="too-bulky" title="Too BULKY!">!</span>{{/if}}
                             </label>
                             <div class="resource-content flexrow flex-center flex-between">
                                 <input
                                     type="number"
-                                    name="data.hp.value"
-                                    value="{{systemData.hp.value}}"
+                                    name="system.hp.value"
+                                    value="{{system.hp.value}}"
                                     data-dtype="Number"
                                 />
                                 <span> / </span>
                                 <input
                                     type="number"
-                                    name="data.hp.max"
-                                    value="{{systemData.hp.max}}"
+                                    name="system.hp.max"
+                                    value="{{system.hp.max}}"
                                     data-dtype="Number"/>
 
                             </div>
@@ -65,9 +65,9 @@
                             <input
                                 class="checkbox-block"
                                 type="checkbox"
-                                {{checked data.data.deprived}}
-                                name="data.deprived"
-                                value="{{data.data.deprived}}"
+                                {{checked system.deprived}}
+                                name="system.deprived"
+                                value="{{system.deprived}}"
                                 data-dtype="Boolean"/>
                         </div>
                     </div>
@@ -77,13 +77,13 @@
                     <div class="resource flexrow flex-group-center">
                         <div class="flexcol">
                             <label
-                                for="data.pounds"
+                                for="system.pounds"
                                 class="resource-label">&#163;</label>
                             <div class="resource-content flexrow flex-center flex-between">
                                 <input
                                     type="number"
-                                    name="data.pounds"
-                                    value="{{systemData.pounds}}"
+                                    name="system.pounds"
+                                    value="{{system.pounds}}"
                                     data-dtype="Number"
                                 />
                             </div>
@@ -92,11 +92,11 @@
                     <div class="resource flexrow flex-group-center">
                         <div class="flexcol">
                             <label
-                                for="data.armour"
+                                for="system.armour"
                                 class="resource-label">Armour</label>
                             <div class="resource-content flexrow flex-center flex-between">
 								<span>
-									{{systemData.armour}}
+									{{system.armour}}
 								</span>
                             </div>
                         </div>
@@ -108,11 +108,11 @@
     </header>
     <div class="">
         <div class="grid grid-3col">
-            {{#each systemData.abilities as |ability key|}}
+            {{#each system.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
                 <div class="flexcol">
                     <label
-                        for="systemData.abilities.{{key}}.value"
+                        for="system.abilities.{{key}}.value"
                         class="resource-label rollable"
                         data-roll="d20[under or equal @abilities.{{key}}.value]"
                         data-label="{{key}} save">
@@ -121,13 +121,13 @@
                     <div class="flexrow">
                         <input
                             type="number"
-                            name="data.abilities.{{key}}.value"
+                            name="system.abilities.{{key}}.value"
                             value="{{ability.value}}"
                             data-dtype="Number"
                         /> <span> / </span>
                         <input
                             type="number"
-                            name="data.abilities.{{key}}.max"
+                            name="system.abilities.{{key}}.max"
                             value="{{ability.max}}"
                             data-dtype="Number"
                         />
@@ -142,7 +142,7 @@
 			<button
                 type="button"
                 title="Rest"
-                {{#if systemData.deprived}}
+                {{#if system.deprived}}
                 disabled="true"
                 {{/if}}
                 class="rest">Rest
@@ -189,12 +189,13 @@
             data-group="primary"
             data-tab="description">
             {{
-            editor
-            content=systemData.biography
-            target="data.biography"
-            button=true
-            owner=owner
-            editable=editable
+              editor
+              system.biography
+              target="system.biography"
+              button=true
+              collaborate=false
+              editable=editable
+              engine="prosemirror"
             }}
         </div>
 
@@ -222,31 +223,31 @@
                     data-item-id="{{item.id}}">
 					<span>
 						<span class="item-name item-edit">
-							{{item.data.quantity}}
-							{{#boldIf item.data.data.equipped}}
+							{{item.system.quantity}}
+							{{#boldIf item.system.equipped}}
 							{{item.name}}
 							{{/boldIf}}
 						</span>
-						{{#if item.data.data.bulky}}
+						{{#if item.system.bulky}}
 						<span class="item-info">BULKY</span>
 						{{/if}}
-						{{#if item.data.data.blast}}
+						{{#if item.system.blast}}
 						<span class="item-info">BLAST</span>
 						{{/if}}
-						{{#if item.data.data.armour}}
-						<span class="item-info">Armour {{item.data.data.armour}}</span>
+						{{#if item.system.armour}}
+						<span class="item-info">Armour {{item.system.armour}}</span>
 						{{/if}}
-						{{#if item.data.damageFormula}}
-						<span class="item-info">{{item.data.data.damageFormula}} damage</span>
+						{{#if item.system.damageFormula}}
+						<span class="item-info">{{item.system.damageFormula}} damage</span>
 						{{/if}}
 					</span>
                     <div class="item-controls">
-                        {{#if item.data.data.equipped}}
-                        {{#if item.data.data.damageFormula}}
+                        {{#if item.system.equipped}}
+                        {{#if item.system.damageFormula}}
                         <span
                             class="item-button rollable"
                             data-label="damage with {{item.name}}"
-                            data-roll="{{item.data.data.damageFormula}}"
+                            data-roll="{{item.system.damageFormula}}"
                             title="Roll Damage">
 							<i class="fas fa-dice-d20"></i>
 						</span>
