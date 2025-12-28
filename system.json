@@ -9,6 +9,14 @@
     {
       "name": "anki21",
       "flags": {}
+    },
+    {
+      "name": "mus0u",
+      "flags": {}
+    },
+    {
+      "name": "sambarilov",
+      "flags": {}
     }
   ],
   "url": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/",
@@ -26,7 +34,7 @@
   ],
   "relationships": [],
   "manifest": "https://raw.githubusercontent.com/mvdleden/electric-bastionland-FoundryVTT/master/system.json",
-  "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.2.1.zip",
+  "download": "https://github.com/mvdleden/electric-bastionland-FoundryVTT/archive/1.3.0.zip",
   "gridDistance": 1,
   "grid": {
     "distance": 1.5,

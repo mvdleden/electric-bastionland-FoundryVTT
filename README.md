@@ -19,5 +19,5 @@ The code is based on the [Into The Odd system](https://github.com/voidcase/IntoT
 3. Launch FoundryVTT and create your new world, selecting the Electric Bastionland system.
 
 ## Contributors
-mvdleden, anki21, mus0u
+mvdleden, anki21, mus0u (V11 update), sambarilov (V13 update).
  
